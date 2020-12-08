@@ -76,3 +76,12 @@ end
 
 weitere Infos in Vagrant Datei
 in /scripts das gitlab-provision.sh - Skript erstellt
+
+vagrant ssh gitlab #in Maschine schauen
+
+.gitignore erstelen, indem eine der automatisch erstellten Dateien im .vagrant Verzeichnis mittels rechter Maustaste zu .gitignore hinzugefügt wird und dann in .gitignore der Pfad auf.vagrant geändert wird
+
+in provision Datei das skript die ubuntu updates durchführen lassen
+
+80, 443, 22 Ports freigeben 
+
