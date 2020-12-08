@@ -1,1 +1,2 @@
 # Vagrant
+Ein Beispiel
