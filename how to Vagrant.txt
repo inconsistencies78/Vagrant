@@ -97,6 +97,8 @@ vagrant ssh gitlab
       apt-get update # update des repository
     apt-get -y install docker-ce docker-ce-cli containerd.io #docker installieren
     apt-cache madison docker-ce #zeigt andere Varianten der docker-ce an, die verfügbar sind im repository
+    docker run hello-world #test, ob docker läuft
+
 vagrant-benutzer zur docker gruppe hinzufügen, so dass docker nicht als root laufen muss, sondern der nutzer vagrant das kann
   usermod -aG docker vagrant 
 Docker automatisch mit dem script starten
