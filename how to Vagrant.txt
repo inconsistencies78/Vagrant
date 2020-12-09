@@ -85,3 +85,19 @@ in provision Datei das skript die ubuntu updates durchführen lassen
 
 80, 443, 22 Ports freigeben 
 
+---
+
+vagrant ssh gitlab
+  sudo -i
+  Docker installieren. in aktueller version
+    vorbereitung:
+      apt-get -y install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+      curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+      add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" # das Docker repository hinzufügen. $(lsb_release -cs) gibt den Kurznamen der aktuelen Ubuntu-Variante aus. damit sind wir für ubuntu-updates gerüstet
+      apt-get update # update des repository
+    apt-get -y install docker-ce docker-ce-cli containerd.io #docker installieren
+    apt-cache madison docker-ce #zeigt andere Varianten der docker-ce an, die verfügbar sind im repository
+vagrant-benutzer zur docker gruppe hinzufügen, so dass docker nicht als root laufen muss, sondern der nutzer vagrant das kann
+  usermod -aG docker vagrant 
+Docker automatisch mit dem script starten
+  systemctl enable docker
