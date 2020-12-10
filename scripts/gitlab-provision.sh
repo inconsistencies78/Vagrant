@@ -1,5 +1,5 @@
 #!/bin/bash
-# hier kommt später noch was rein.
+
 apt-get update
 apt-get -y upgrade # kein full-upgrade, da wenn jetzt kernel-Änderungen wären, müssten wir neu starten. also upgrade ohne mögliche Kernel-Updates.
 apt-get -y install apt-transport-https ca-certificates curl gnupg-agent software-properties-common # vorbereiten, um aktuelle Docker Variante u.a. zu installieren
@@ -14,10 +14,10 @@ mkdir -p /srv/gitlab/{data,logs,config}
 # Gitlab-CE Container erstellen
 docker run --detach \
 --hostname gitlab \
---publish 80:80 # links auf dem Host/außerhalb des Containers : rechts im Container
+--publish 80:80 \ 
 --name gitlab \
 --restart always \
---volume /srv/gitlab/config:/etc/gitlab \ # links vom : im Host / rechts vom : im Docker-Container
+--volume /srv/gitlab/config:/etc/gitlab \ 
 --volume /srv/gitlab/logs:/var/log/gitlab \
 --volume /srv/gitlab/data:/var/opt/gitlab \
 gitlab/gitlab-ce:latest

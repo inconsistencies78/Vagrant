@@ -119,3 +119,14 @@ Provision Datei anpassen. Ports, Gitlab-CE
     --volume /srv/gitlab/logs:/var/log/gitlab \
     --volume /srv/gitlab/data:/var/opt/gitlab \
     gitlab/gitlab-ce:latest
+
+
+    make
+
+    vagrant ssh gitlab
+
+    browser öffnen
+      localhost:8080
+    
+
+    
