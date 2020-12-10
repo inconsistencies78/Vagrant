@@ -101,5 +101,21 @@ vagrant ssh gitlab
 
 vagrant-benutzer zur docker gruppe hinzufügen, so dass docker nicht als root laufen muss, sondern der nutzer vagrant das kann
   usermod -aG docker vagrant 
+
 Docker automatisch mit dem script starten
   systemctl enable docker
+
+
+Provision Datei anpassen. Ports, Gitlab-CE
+  # nötige Verzeichnisse erstellen
+    mkdir -p /srv/gitlab/{data,logs,config}
+  # Gitlab-CE Container erstellen
+    docker run --detach \
+    --hostname gitlab \
+    --publish 80:80 # links auf dem Host/außerhalb des Containers : rechts im Container
+    --name gitlab \
+    --restart always \
+    --volume /srv/gitlab/config:/etc/gitlab \ # links vom : im Host / rechts vom : im Docker-Container
+    --volume /srv/gitlab/logs:/var/log/gitlab \
+    --volume /srv/gitlab/data:/var/opt/gitlab \
+    gitlab/gitlab-ce:latest

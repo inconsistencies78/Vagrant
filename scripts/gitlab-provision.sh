@@ -9,3 +9,15 @@ apt-get update
 apt-get -y install docker-ce docker-ce-cli containerd.io 
 usermod -aG docker vagrant 
 systemctl enable docker #docker wird bei jedem boot automatisch gestartet
+# nötige Verzeichnisse erstellen
+mkdir -p /srv/gitlab/{data,logs,config}
+# Gitlab-CE Container erstellen
+docker run --detach \
+--hostname gitlab \
+--publish 80:80 # links auf dem Host/außerhalb des Containers : rechts im Container
+--name gitlab \
+--restart always \
+--volume /srv/gitlab/config:/etc/gitlab \ # links vom : im Host / rechts vom : im Docker-Container
+--volume /srv/gitlab/logs:/var/log/gitlab \
+--volume /srv/gitlab/data:/var/opt/gitlab \
+gitlab/gitlab-ce:latest
