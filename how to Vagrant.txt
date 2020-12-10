@@ -115,7 +115,7 @@ Provision Datei anpassen. Ports, Gitlab-CE
     --publish 80:80 # links auf dem Host/außerhalb des Containers : rechts im Container
     --name gitlab \
     --restart always \
-    --volume /srv/gitlab/config:/etc/gitlab \ # links vom : im Host / rechts vom : im Docker-Container
+    --volume /srv/gitlab/config:/etc/gitlab \ # links vom : im Host / rechts vom : im Docker-Container \
     --volume /srv/gitlab/logs:/var/log/gitlab \
     --volume /srv/gitlab/data:/var/opt/gitlab \
     gitlab/gitlab-ce:latest
@@ -124,9 +124,11 @@ Provision Datei anpassen. Ports, Gitlab-CE
     make
 
     vagrant ssh gitlab
+    
+    docker ps #container läuft?
 
     browser öffnen
       localhost:8080
     
 
-    
+
